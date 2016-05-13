@@ -1,6 +1,6 @@
 # Docker jenkins swarm slave
 
-this images enable running a jenkins slave using the [Jenkins Swarm Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin)
+this container enables running a jenkins slave using the [Jenkins Swarm Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin)
 
 ## Details
 
@@ -9,7 +9,8 @@ Installes packages:
 
 * git
 * subversion
-* OpenJDK 1.8.0-96
+* OpenJDK 1.8.0-19
+* Maven 3.3.9
 * NodeJS 4.4.4
 * Bower
 
