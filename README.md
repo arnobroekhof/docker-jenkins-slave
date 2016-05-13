@@ -5,7 +5,7 @@ this container enables running a jenkins slave using the [Jenkins Swarm Plugin](
 ## Details
 
 Distro: ubuntu 14.04
-Installes packages:
+Installed packages:
 
 * git
 * subversion
