@@ -41,4 +41,29 @@ set -e
 #                                  auto-configured like the default behavior
 # -username VAL                  : The Jenkins username for authentication
 
-exec /usr/bin/java -jar /apps/jenkins/swarm-client.jar "$@"
+ARGS=""
+
+if [ ! -z $JENKINS_MASTER ]; then
+  ARGS="${ARGS} -master ${JENKINS_MASTER}"
+fi
+
+if [ ! -z $NUM_EXECUTORS ]; then
+  ARGS=${ARGS} -executors ${NUM_EXECUTORS}"
+fi
+
+if [ ! -z $JENKINS_USER ]; then
+  if [ ! -z $PASSWORD_ENV_VARIABLE ]; then
+    ARGS="${ARGS} -username ${JENKINS_USER} -passwordEnvVariable ${PASSWORD_ENV_VARIABLE}"
+  fi
+fi
+
+if [ ! -z $DISABLE_SSL_VERIFICATION ]; then
+  ARGS="${ARGS} -disableSslVerification" 
+fi
+
+if [ ! -z $ARGS ]; then
+  exec /usr/bin/java -jar /apps/jenkins/swarm-client.jar $ARGS
+else
+  exec /usr/bin/java -jar /apps/jenkins/swarm-client.jar "$@"
+fi
+
